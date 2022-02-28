@@ -37,6 +37,9 @@ function conda_start {
 	# !! Contents within this block are managed by 'conda init' !!
 	(& $CONDA_PATH "shell.powershell" "hook") | Out-String | Invoke-Expression
 	#endregion
+	
+	#Fix conda Path when username contains "É"
+	$Env:PATH = $Env:PATH.replace("├ë", "É")
 
 	function prompt {
 		$env = (conda info --json | ConvertFrom-Json).active_prefix_name
