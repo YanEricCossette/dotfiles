@@ -15,7 +15,7 @@ function prompt_custom {
 	Write-Host "$pwd" -Foregroundcolor blue
 
 	Try {			
-		$currentBranchName = [regex]::matches($(git branch), "\* ([\w-]*)").captures.groups[1].value
+		$currentBranchName = [regex]::matches($(git branch), "\* ([\/\w-]*)").captures.groups[1].value
 		Write-Host "($($currentBranchName)) " -NoNewLine -Foregroundcolor DarkYellow
 	}
 	Catch {
